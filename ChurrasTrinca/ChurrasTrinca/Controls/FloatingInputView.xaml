@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:ffimageSvgloading="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:controls="clr-namespace:ChurrasTrinca.Controls"
+             x:Class="ChurrasTrinca.Controls.FloatingInputView"
+             x:Name="this"
+             >
+
+
+    <ContentView.Content>
+
+        <StackLayout
+            BackgroundColor="Transparent">
+
+            <pancake:PancakeView
+            BackgroundColor="{Binding ViewBackgroundColor, Source={x:Reference this}}"
+            HorizontalOptions="FillAndExpand"
+            CornerRadius="10"
+            Border="{Binding ViewBorder, Source={x:Reference this}}"
+            HeightRequest="65">
+
+                <StackLayout
+                Orientation="Horizontal">
+
+                    <ffimageSvgloading:SvgCachedImage
+                    Source="{Binding IconResourceName, Source={x:Reference this}}" 
+                    BackgroundColor="Transparent"
+                    WidthRequest="30"
+                    Margin="15,10,5,10"/>
+
+                    <controls:FloatingInput
+                    x:Name="floatingInput"
+                    Text="{Binding Text, Source={x:Reference this}}" 
+                    Title="{Binding Title, Source={x:Reference this}}"
+                    TextColor="{Binding TextColor, Source={x:Reference this}}" 
+                    TitleColor="{Binding TitleColor, Source={x:Reference this}}"
+                    PlaceHolderColor="{Binding PlaceHolderColor, Source={x:Reference this}}"                 
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="FillAndExpand"/>
+
+                    <ImageButton
+                    x:Name="imgAuxCmd"
+                    Source="{Binding AuxCmdImgSource, Source={x:Reference this}}"
+                    BackgroundColor="Transparent"
+                    WidthRequest="30"
+                    Margin="10"
+                    HorizontalOptions="End"
+                    IsVisible="False">
+                    </ImageButton>
+
+                </StackLayout>
+
+            </pancake:PancakeView>
+
+            <Label
+            Text="{Binding ErrorMessage, Source={x:Reference this}}"
+            TextColor="{StaticResource Light-Support-Red}"
+            FontSize="Small"
+            IsVisible="{Binding ShowErrorMessage, Source={x:Reference this}}"
+            Margin="10,0,0,0"/>
+
+        </StackLayout>
+
+    </ContentView.Content>
+</ContentView>

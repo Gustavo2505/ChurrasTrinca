@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ChurrasTrinca.Views.Bbq.AddBbqPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center">
+            <Entry x:Name="titulo" Placeholder="Nome do churras"/>
+            <Entry x:Name="descricao" Placeholder="Descriçao"/>
+            <Entry x:Name="valorpago" Placeholder="Valor pago?" Keyboard="Numeric"/>
+            <DatePicker x:Name="date"/>
+            <Button Text="Cadastrar" Clicked="BtnCadastrar"></Button>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ChurrasTrinca.Controls"
+             x:Class="ChurrasTrinca.Controls.FloatingInput"
+             x:Name="this"
+             BackgroundColor="Transparent">
+    <ContentView.Content>
+        <Grid>
+            <controls:BorderlessEntry
+                x:Name="EntryField" 
+                Completed="Handle_Completed" 
+                Text="{Binding Text, Source={x:Reference this}}" 
+                ReturnType="{Binding ReturnType, Source={x:Reference this}}"
+                IsPassword="{Binding IsPassword, Source={x:Reference this}}"
+                Keyboard="{Binding Keyboard, Source={x:Reference this}}"
+                TextColor="{Binding TextColor, Source={x:Reference this}}" 
+                BackgroundColor="{Binding BackgroundColor, Source={x:Reference this}}"
+                VerticalTextAlignment="End"
+                Unfocused="Handle_Unfocused" 
+                Focused="Handle_Focused">
+
+                <controls:BorderlessEntry.TranslationY>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="iOS" Value="-9" />
+                        <On Platform="Android" Value="3" />
+                    </OnPlatform>
+                </controls:BorderlessEntry.TranslationY>
+
+            </controls:BorderlessEntry>
+            <Label
+                x:Name="LabelTitle" 
+                Text="{Binding Title, Source={x:Reference this}}"
+                TextColor="{Binding PlaceHolderColor, Source={x:Reference this}}"
+                VerticalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Handle_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

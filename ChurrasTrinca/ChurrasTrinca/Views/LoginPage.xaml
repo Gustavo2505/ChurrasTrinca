@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:controls="clr-namespace:ChurrasTrinca.Controls"
+             x:Class="ChurrasTrinca.Views.LoginPage"
+            NavigationPage.HasNavigationBar="False"
+            xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+            xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+            ios:Page.UseSafeArea="True"
+     >
+    <ContentPage.Content>
+        <StackLayout  Orientation="Vertical" VerticalOptions="CenterAndExpand">
+   
+            <StackLayout Orientation="Vertical">              
+                <pancake:PancakeView  Margin="40,0,40,0">
+                <controls:FloatingInputView
+                    x:Name="Username"                       
+                      IconResourceName="resource://ChurrasTrinca.Resources.Icons.Profile.svg"
+                    Title="Usuario"
+                    TextColor="Black"
+                />
+            </pancake:PancakeView>
+                <pancake:PancakeView Margin="40,0,40,0">
+                    <controls:FloatingInputView
+                    x:Name="Password"                       
+                    IconResourceName="resource://ChurrasTrinca.Resources.Icons.Lock.svg"
+                    Title="Senha"
+                    TextColor="Black"
+                />
+                </pancake:PancakeView>                
+                <StackLayout 
+                    VerticalOptions="EndAndExpand" 
+                    HorizontalOptions="End">
+                    <Button
+                        BackgroundColor="Black"
+                        TextColor="White"
+                        Text="Entrar"
+                        Margin="20,30,40,0"
+                        CornerRadius="20"
+                        HeightRequest="80"
+                        WidthRequest="130"
+                        Clicked="BtnLogin"/>
+                </StackLayout>
+                
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

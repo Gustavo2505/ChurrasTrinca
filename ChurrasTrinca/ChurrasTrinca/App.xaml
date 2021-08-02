@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ChurrasTrinca.App">
+    <!--
+        Define global resources and styles here, that apply to all pages in your app.
+    -->
+    <Application.Resources>
+
+        <ResourceDictionary>
+
+            <Color x:Key="Light-Green-300">#2BB673</Color>
+
+            <Color x:Key="Light-Blue-500">#008FB9</Color>
+            <Color x:Key="Light-Blue-300">#03B2C7</Color>
+            <Color x:Key="Light-Blue-100">#8ED2DA</Color>
+
+            <!-- TODO: Gradientes -->
+
+            <Color x:Key="Light-BlackWhite-Black">#3E3E3E</Color>
+            <Color x:Key="Light-BlackWhite-White">#FFFFFF</Color>
+
+            <Color x:Key="Light-Support-Red">#DD2934</Color>
+
+            <Color x:Key="Light-Grey-800">#4B5153</Color>
+            <Color x:Key="Light-Grey-300">#E8E7E7</Color>
+            <Color x:Key="Light-Grey-100">#F9F9F9</Color>
+
+            <Color x:Key="Light-Grey-800-Alpha50">#7F4B5153</Color>
+
+            <Color x:Key="Dark-Blue-500">#157D9B</Color>
+            <Color x:Key="Dark-Blue-300">#3BB1D3</Color>
+
+            <Color x:Key="Dark-BlackWhite-Black">#262626</Color>
+            <Color x:Key="Dark-BlackWhite-White">#FFFFFF</Color>
+
+
+            <Color x:Key="Dark-BlackWhite-BlackFrame">#4B5153</Color>
+
+            <Color x:Key="Dark-Support-Red">#F1414C</Color>
+
+            <Color x:Key="Light-SkeletonColor">#C4C4C4</Color>
+            <Color x:Key="Dark-SkeletonColor">#C4C4C4</Color>
+
+        </ResourceDictionary>
+
+    </Application.Resources>
+
+</Application>
