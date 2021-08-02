@@ -32,5 +32,10 @@ namespace ChurrasTrinca.Views.Bbq
 
 
         }
+
+        private void BtnAddUser(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new Views.Bbq.AddParticipant());
+        }
     }
 }

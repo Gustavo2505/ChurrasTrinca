@@ -4,6 +4,9 @@
              xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="ChurrasTrinca.Views.Bbq.AllBbqPage"
              NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{AppThemeBinding
+                                            Light={StaticResource Light-Grey-800}, 
+                                            Dark={StaticResource Dark-BlackWhite-White}}"
              >
     <ContentPage.Content>
         <StackLayout>
@@ -27,17 +30,24 @@
                                         Dark={StaticResource Dark-BlackWhite-Black}}">
                                         <Grid BackgroundColor="Orange">
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="25"/>
-                                                <RowDefinition Height="25"/>
-                                                <RowDefinition Height="25"/>
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                                <RowDefinition />
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition/>
-                                                <ColumnDefinition/>
+                                                <ColumnDefinition Width="3*"/>
+                                                <ColumnDefinition Width="1*"/>
                                             </Grid.ColumnDefinitions>
-                                            
-                                            <Label
-                                           Grid.Row="0"
+                                          
+<!--<Button Grid.Column="3" Text="On"  FontSize="10" CommandParameter="{Binding .}"   />
+
+                                            <Button Grid.Column="2"  FontSize="6" CommandParameter="{Binding .}" ImageSource="ic_trash_can_outline_black_18dp.png"   />-->
+
+
+
+                                          <Label
+                                                    Grid.Row="0"
                                             FontSize="18" 
                                             Text="{Binding date}"
                                             BindingContext="{Binding .}"  
@@ -88,7 +98,7 @@
                                             HorizontalTextAlignment="Center"
                                             VerticalOptions="Center"
                                              Margin="0"/>
-                                            
+                                                                                  
                                         </Grid>
                                     </StackLayout>
                                 </pancake:PancakeView>

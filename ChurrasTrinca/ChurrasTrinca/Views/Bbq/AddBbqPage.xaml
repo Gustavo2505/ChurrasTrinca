@@ -9,7 +9,7 @@
             <Entry x:Name="valorpago" Placeholder="Valor pago?" Keyboard="Numeric"/>
             <DatePicker x:Name="date"/>
             <Button Text="Cadastrar" Clicked="BtnCadastrar"></Button>
-
+            <Button Text="Adicionar Participante" Clicked="BtnAddUser"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
