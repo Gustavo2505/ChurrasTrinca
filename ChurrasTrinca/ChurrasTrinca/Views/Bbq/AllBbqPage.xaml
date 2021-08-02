@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout BackgroundColor="Transparent"  VerticalOptions="Center">
-                <CollectionView x:Name="CVListaDeTarefas" EmptyView="Você ainda não adicionou nenhum Device" >
+                <CollectionView x:Name="CVListaDeTarefas" EmptyView="Você ainda não adicionou nenhum Device" RemainingItemsThreshold="-1" RemainingItemsThresholdReached="InfinitySearch">
                     <CollectionView.ItemTemplate >
                         <DataTemplate  >
                             <pancake:PancakeView                                   
