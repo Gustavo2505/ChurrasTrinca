@@ -1,5 +1,7 @@
 ﻿using ChurrasTrinca.Helpers;
+using ChurrasTrinca.Models;
 using ChurrasTrinca.Models.ResponseService;
+using ChurrasTrinca.ViewModel.Bbq;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,86 +17,154 @@ namespace ChurrasTrinca.Views.Bbq
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AllBbqPage : ContentPage
     {
-        private ObservableCollection<Models.Bbq> MainList { get; set; }
-        private SearchParams _searchParams;
+        public ObservableCollection<Models.Bbq> MainList { get; set; }
+       // private SearchParams _searchParams;
         public AllBbqPage()
         {
-
+            
 
             InitializeComponent();
 
+            carregaotudoAsync();
 
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                BindingContext = this;
-                carregaotudoAsync();
 
-            });
+            BindingContext = this;
+              
+
 
 
         }
 
 
 
-        private async void carregaotudoAsync()
+        public async void carregaotudoAsync()
         {
 
-            _searchParams = new SearchParams() { pages = 1 };
+        //    _searchParams = new SearchParams() { pages = 1 };
 
-            ResponseService<List<Models.Bbq>> responseService = await Services.Service.ServiceClientInstance.GetAllBbq(_searchParams.pages = 1);
+        //    ResponseService<List<Models.Bbq>> responseService = await Services.Service.ServiceClientInstance.GetAllBbq(_searchParams.pages = 1);
 
             //if (responseService.isSucess)
            // {
-                MainList = new ObservableCollection<Models.Bbq>(responseService.Data);
+         /*       MainList = new ObservableCollection<Models.Bbq>(responseService.Data);
                 CVListaDeTarefas.ItemsSource = MainList;
-            CVListaDeTarefas.RemainingItemsThreshold = 0;
+               CVListaDeTarefas.RemainingItemsThreshold = 0;
 
         //    }
         //   else
             ///   {
             //       await DisplayAlert("erro", "Erro", "ok");
-            //   }
+            //   }*/
 
 
 
-            //   MainList = new ObservableCollection<Models.Bbq>();
-            //  var lst = await Services.Service.ServiceClientInstance.GetAllBbq();
+              MainList = new ObservableCollection<Models.Bbq>();
+              var lst = await Services.Service.ServiceClientInstance.GetAllBbq();
 
-            //    foreach (Models.Bbq its in lst.Data)
-            //    {
-            //        MainList.Add(its);
-            //    };
+               foreach (Models.Bbq its in lst.Data)
+                {
+                   MainList.Add(its);
+                };
 
-            //   CVListaDeTarefas.ItemsSource = MainList;
+          
 
+          
         }
 
+        private async void BtnDeleteBbq(object sender, EventArgs e)
+        {
+            bool Alerta = await DisplayAlert("Atenção", "Deseja mesmo excluir este evento", "Sim", "Não");
+            if (Alerta == true)
+            {
+
+                var t = (Button)sender;
+                Models.Bbq ev = (Models.Bbq)t.CommandParameter;
+                
+               // await methods.ExcluirEventAndAction(ev.Id);
+                MainList.Remove(ev);
+            }
+        
+    }
 
 
         private void BtnCadastrarChurras(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new Bbq.AddBbqPage());
+            var vm = new BbqVM();
+            vm._participantVM = new ObservableCollection<ParticipantVM>();
+
+            Navigation.PushModalAsync(new Bbq.AddBbqPage(vm, AddOrUpdateEvent));
         }
 
-        private async void InfinitySearch(object sender, EventArgs e)
+        private void AddOrUpdateEvent(Models.Bbq ev)
         {
-            _searchParams.pages++;
-            ResponseService<List<Models.Bbq>> responseService = await Services.Service.ServiceClientInstance.GetAllBbq(_searchParams.pages);
-
-         //   if (responseService.isSucess)
-         //   {
-                var mainlistFromBbqService = responseService.Data;
-                foreach (Models.Bbq item in mainlistFromBbqService)
-                {
-                    MainList.Add(item);
-                }
-                CVListaDeTarefas.ItemsSource = MainList;
+            if (MainList.Count > 0 &&
+                MainList.Any(X => X.id == ev.id))
+            {
+                var objList = MainList.FirstOrDefault(X => X.id == ev.id);
+                var idx = MainList.IndexOf(objList);
+                MainList[idx] = ev;
             }
-          //  else
-          //  {
-          //      await DisplayAlert("erro", "Erro", "ok");
-          //  }
+            else
+            {
+                MainList.Add(ev);
+            }
 
         }
+
+
+        private void Abrir(object sender, EventArgs e)
+        {
+            var evento = (TappedEventArgs)e;
+            var ev = (Models.Bbq)evento.Parameter; 
+            //   Metodo de pesquisa Visualizar(ev.Id);
+            var lst = new ObservableCollection<ParticipantVM>();
+
+
+
+           /*
+            foreach (Participants act in ev.Participants)
+            {
+                lst.Add(new ParticipantVM
+                {
+                  name = act.name,
+                  confirmed = act.confirmed,
+                  value_paid = act.value_paid,
+                  id = act.id
+
+                });
+            }
+           */
+            var vm = new BbqVM();
+            vm.title = ev.title;
+            vm.id = ev.id;
+            vm.date = ev.date;
+            vm.value_per_person = ev.value_per_person;
+           // vm._participantVM = lst;
+
+            Navigation.PushAsync(new Views.Bbq.AddBbqPage(vm, AddOrUpdateEvent));
+
+        }
+
+
+        /*    private async void InfinitySearch(object sender, EventArgs e)
+            {
+                _searchParams.pages++;
+                ResponseService<List<Models.Bbq>> responseService = await Services.Service.ServiceClientInstance.GetAllBbq(_searchParams.pages);
+
+             //   if (responseService.isSucess)
+             //   {
+                    var mainlistFromBbqService = responseService.Data;
+                    foreach (Models.Bbq item in mainlistFromBbqService)
+                    {
+                        MainList.Add(item);
+                    }
+                    CVListaDeTarefas.ItemsSource = MainList;
+                }*/
+        //  else
+        //  {
+        //      await DisplayAlert("erro", "Erro", "ok");
+        //  }
+
     }
+}
 

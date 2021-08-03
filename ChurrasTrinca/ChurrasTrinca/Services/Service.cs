@@ -73,18 +73,11 @@ namespace ChurrasTrinca.Services
             return responseService;
         }
 
-        public async Task<ResponseService<Bbq>> PostBbq(string Title, string Description, DateTime Date, double Value_per_person)
+        public async Task<ResponseService<Bbq>> PostBbq(Bbq bbq)
         {
-            Bbq churras = new Bbq()
-            {
-                title = Title,
-                description = Description,
-                date = Date,
-                value_per_person = Value_per_person
-
-            };
+        
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tok);
-            var content = new StringContent(JsonConvert.SerializeObject(churras), Encoding.UTF8, "application/json");
+            var content = new StringContent(JsonConvert.SerializeObject(bbq), Encoding.UTF8, "application/json");
 
             HttpResponseMessage response = await client.PostAsync("https://trinca-api.herokuapp.com/bbq/", content);
 
@@ -109,12 +102,12 @@ namespace ChurrasTrinca.Services
             }
             return responseService;
         }
-
-        public async Task<ResponseService<List<Bbq>>> GetAllBbq(int numberOfPage = 1 )
+//        public async Task<ResponseService<List<Bbq>>> GetAllBbq(int numberOfPage = 1)
+        public async Task<ResponseService<List<Bbq>>> GetAllBbq()
         {       
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tok);           
-            HttpResponseMessage response = await client.GetAsync($"https://trinca-api.herokuapp.com/bbq/?paginated=true&page={numberOfPage}");
-            
+          //  HttpResponseMessage response = await client.GetAsync($"https://trinca-api.herokuapp.com/bbq/?paginated=true&page={numberOfPage}");
+            HttpResponseMessage response = await client.GetAsync($"https://trinca-api.herokuapp.com/bbq/");
             ResponseService <List<Bbq>> responseService = new ResponseService<List<Bbq>>();
             responseService.isSucess = response.IsSuccessStatusCode;
             responseService.statusCode = (int)response.StatusCode;

@@ -10,6 +10,6 @@ namespace ChurrasTrinca.Models
         public string name { get; set; }
         public bool confirmed { get; set; }
         public double value_paid { get; set; }
-        public List<Bbq> BbqId { get; set; }
+        public Bbq BbqId { get; set; }
     }
 }

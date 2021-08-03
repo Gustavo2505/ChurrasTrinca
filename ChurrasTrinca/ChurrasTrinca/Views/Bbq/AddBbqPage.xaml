@@ -4,12 +4,12 @@
              x:Class="ChurrasTrinca.Views.Bbq.AddBbqPage">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center">
-            <Entry x:Name="titulo" Placeholder="Nome do churras"/>
-            <Entry x:Name="descricao" Placeholder="Descriçao"/>
-            <Entry x:Name="valorpago" Placeholder="Valor pago?" Keyboard="Numeric"/>
+            <Entry x:Name="tituloV" Placeholder="Nome do churras"/>
+            <Entry x:Name="descricao"  Placeholder="Descriçao"/>
+            <Entry x:Name="ValorPorPessoa" Placeholder="Valor por pessoa" Keyboard="Numeric"/>
             <DatePicker x:Name="date"/>
-            <Button Text="Cadastrar" Clicked="BtnCadastrar"></Button>
-            <Button Text="Adicionar Participante" Clicked="BtnAddUser"/>
+            <Button Text="Proximo" Clicked="BtnNext_Clicked"></Button>
+      
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

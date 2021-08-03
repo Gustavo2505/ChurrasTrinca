@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ChurrasTrinca.Views.Bbq.AddParticipant">
     <ContentPage.Content>
+        
         <StackLayout VerticalOptions="CenterAndExpand">
+            <Button VerticalOptions="Start" Clicked="BtnCancel" Text="Cancelar" TextColor="White"/>
             <Entry Placeholder="Nome" x:Name="name"/>
             <Entry Placeholder="Confirmado?" x:Name="confirmed"/>
             <Entry Placeholder="Valor pago" Keyboard="Numeric" x:Name="value_paid"/>

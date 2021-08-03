@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ChurrasTrinca.Models
 {
-   public class Bbq : BaseViewModel
+   public class Bbq
     {
         public int id { get; set; }
         public string title { get; set; }
