@@ -104,8 +104,8 @@ namespace ChurrasTrinca.Controls
                 };
 
                 var triggerAction = new ShowPasswordTriggerAction();
-                triggerAction.ShowIcon = SvgImageSource.FromResource("ConectLife.Resources.Icons.Show.svg", vectorWidth: 30, vectorHeight: 30);
-                triggerAction.HideIcon = SvgImageSource.FromResource("ConectLife.Resources.Icons.Hide.svg", vectorWidth: 30, vectorHeight: 30);
+                triggerAction.ShowIcon = SvgImageSource.FromResource("ChurrasTrinca.Resources.Icons.Show.svg", vectorWidth: 30, vectorHeight: 30);
+                triggerAction.HideIcon = SvgImageSource.FromResource("ChurrasTrinca.Resources.Icons.Hide.svg", vectorWidth: 30, vectorHeight: 30);
                 trigger.Actions.Add(triggerAction);
 
                 view.floatingInput.SetBinding(FloatingInput.IsPasswordProperty, new Binding(nameof(ShowPasswordTriggerAction.HidePassword), source: triggerAction));

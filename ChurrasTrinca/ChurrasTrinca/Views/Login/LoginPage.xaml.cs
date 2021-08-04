@@ -16,6 +16,7 @@ namespace ChurrasTrinca.Views.Login
         public LoginPage()
         {
             InitializeComponent();
+      
         }
         private async void BtnLogin(object sender, EventArgs e)
         {
