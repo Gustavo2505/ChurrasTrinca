@@ -16,9 +16,15 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
+                    
+                    <!--TODO, NÃO ESTA SENDO POSSIVEL REALIZAR A INSERÇAO DO PARTICIPANTE-->
+                    <Label Grid.Column="0" Text="Pessoas confirmadas: 0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Black"/>
+                    <Label Grid.Column="1" Text="Valor arrecadado: 0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,0,14,0"  TextColor="Black"/>
+
 
                     <Button
                     Text="Sair"
+                    Clicked="BtnBack"
                     BackgroundColor="Black"
                     TextColor="White"
                     Grid.Column="2"

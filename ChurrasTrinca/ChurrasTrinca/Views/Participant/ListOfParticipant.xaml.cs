@@ -72,7 +72,7 @@ namespace ChurrasTrinca.Views.Participant
         private void BtnInsertParticipant(object sender, EventArgs e)
         {
             var vm = new ParticipantVM();
-            vm.id = _vm.id;
+            vm.bbq_id = _vm.id;
 
             Navigation.PushAsync(new NewParticipant(vm, AddOrUpdateEvent));
 
@@ -93,5 +93,9 @@ namespace ChurrasTrinca.Views.Participant
 
         }
 
+        private void BtnBack(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
+        }
     }
 }

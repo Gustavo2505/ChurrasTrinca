@@ -178,6 +178,10 @@ namespace ChurrasTrinca.Services
             ResponseService<Participants> responseService = new ResponseService<Participants>();
             responseService.isSucess = response.IsSuccessStatusCode;
             responseService.statusCode = (int)response.StatusCode;
+            if(response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return responseService;
+            }
             if (response.IsSuccessStatusCode)
             {
                 using (var stream = await response.Content.ReadAsStreamAsync())

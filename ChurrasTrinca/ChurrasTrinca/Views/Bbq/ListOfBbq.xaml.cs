@@ -114,6 +114,11 @@ namespace ChurrasTrinca.Views.Bbq
             Navigation.PushAsync(new ListOfParticipant(vm, AddOrUpdateEvent));
 
         }
+
+        private void BtnExit(object sender, EventArgs e)
+        {
+            Navigation.PopToRootAsync();
+        }
     }
 }
 

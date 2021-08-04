@@ -41,6 +41,8 @@ namespace ChurrasTrinca.Views.Participant
 
             Models.Participants ev = new Models.Participants
             {
+                
+                id = _vm.id,
                 bbq_id = _vm.bbq_id,
                 name = _vm.name,
                 value_paid = _vm.value_paid,
@@ -59,6 +61,11 @@ namespace ChurrasTrinca.Views.Participant
                 ResponseService<Models.Participants> responseService = await Services.Service.ServiceClientInstance.putUser(ev);
                 await Navigation.PopAsync();
             }
+        }
+
+        private void BtnBack(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
         }
     }
 }

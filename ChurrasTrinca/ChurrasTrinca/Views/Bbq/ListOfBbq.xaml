@@ -18,6 +18,7 @@
                     </Grid.ColumnDefinitions>
                  
                     <Button
+                        Clicked="BtnExit"
                     Text="Sair"
                     BackgroundColor="Black"
                     TextColor="White"

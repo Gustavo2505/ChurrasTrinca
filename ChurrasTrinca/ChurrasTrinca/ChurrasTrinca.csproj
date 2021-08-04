@@ -11,18 +11,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\afazer\**" />
+    <EmbeddedResource Remove="Views\afazer\**" />
+    <None Remove="Views\afazer\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Resources\Icons\AddPerson.svg" />
+    <None Remove="Resources\Icons\Hide.svg" />
     <None Remove="Resources\Icons\Lock.svg" />
     <None Remove="Resources\Icons\LogoTrinca.svg" />
     <None Remove="Resources\Icons\Profile.svg" />
+    <None Remove="Resources\Icons\Show.svg" />
     <None Remove="Resources\Icons\trash.svg" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\Icons\AddPerson.svg" />
+    <EmbeddedResource Include="Resources\Icons\Hide.svg" />
     <EmbeddedResource Include="Resources\Icons\Lock.svg" />
     <EmbeddedResource Include="Resources\Icons\LogoTrinca.svg" />
     <EmbeddedResource Include="Resources\Icons\Profile.svg" />
+    <EmbeddedResource Include="Resources\Icons\Show.svg" />
     <EmbeddedResource Include="Resources\Icons\trash.svg" />
   </ItemGroup>
 
@@ -41,18 +51,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Controls\FloatingInputView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\afazer\AddBbqPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\afazer\AddParticipant.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\afazer\AllBbqPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\afazer\AllParticipantsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Bbq\ListOfBbq.xaml">

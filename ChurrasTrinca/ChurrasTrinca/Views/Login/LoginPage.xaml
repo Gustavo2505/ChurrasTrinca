@@ -42,6 +42,8 @@
                     IconResourceName="resource://ChurrasTrinca.Resources.Icons.Lock.svg"
                     Title="Senha"
                     TextColor="Black"
+                    EnablePasswordTrigger="True"
+                    AuxCmdImgSource="{extensions:ImageSourceFromSvg SvgSource=ChurrasTrinca.Resources.Icons.Hide.svg, ImageWidth=30, ImageHeight=30}"
                 />
                 </pancake:PancakeView>
                 <StackLayout 
