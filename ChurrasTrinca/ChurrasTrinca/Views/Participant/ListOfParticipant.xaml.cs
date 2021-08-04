@@ -28,18 +28,19 @@ namespace ChurrasTrinca.Views.Participant
         }
         private async void LoadingAllHelper()
         {
-            MainList = new ObservableCollection<Models.Participants>();
+       
 
             if (_vm.id != null)
             {
+                MainList = new ObservableCollection<Models.Participants>();
                 var lst = await Services.Service.ServiceClientInstance.GetAllUsers(_vm.id);
          
-                  
+                  if (lst.Data != null) { 
                 foreach (Models.Participants its in lst.Data)
                 {
                     MainList.Add(its);
                 };
-
+                }
             }
             else
             {
