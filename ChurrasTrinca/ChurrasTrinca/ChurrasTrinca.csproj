@@ -11,20 +11,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Icons\AddPerson.svg" />
     <None Remove="Resources\Icons\Lock.svg" />
     <None Remove="Resources\Icons\LogoTrinca.svg" />
     <None Remove="Resources\Icons\Profile.svg" />
+    <None Remove="Resources\Icons\trash.svg" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Icons\AddPerson.svg" />
     <EmbeddedResource Include="Resources\Icons\Lock.svg" />
     <EmbeddedResource Include="Resources\Icons\LogoTrinca.svg" />
     <EmbeddedResource Include="Resources\Icons\Profile.svg" />
+    <EmbeddedResource Include="Resources\Icons\trash.svg" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.12" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="1.2.0" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
@@ -40,19 +43,31 @@
     <EmbeddedResource Update="Controls\FloatingInputView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Bbq\AddBbqPage.xaml">
+    <EmbeddedResource Update="Views\afazer\AddBbqPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Bbq\AddParticipant.xaml">
+    <EmbeddedResource Update="Views\afazer\AddParticipant.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Bbq\AllBbqPage.xaml">
+    <EmbeddedResource Update="Views\afazer\AllBbqPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Bbq\AllParticipantsPage.xaml">
+    <EmbeddedResource Update="Views\afazer\AllParticipantsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LoginPage.xaml">
+    <EmbeddedResource Update="Views\Bbq\ListOfBbq.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Bbq\NewBbq.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Login\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Participant\ListOfParticipant.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Participant\NewParticipant.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

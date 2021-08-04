@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:controls="clr-namespace:ChurrasTrinca.Controls"                    
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
+             xmlns:extensions="clr-namespace:ChurrasTrinca.Helpers.MarkupExtensions" 
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="{AppThemeBinding Light={StaticResource Light-BlackWhite-White}, Dark={StaticResource Dark-BlackWhite-BlackFrame}}"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="ChurrasTrinca.Views.Login.LoginPage"
+             >
+    <ContentPage.Resources>
+        <sys:Int32 x:Key="btnRenderSize">30</sys:Int32>
+        <sys:Int32 x:Key="btnHeightUnpressed">70</sys:Int32>
+        <sys:Int32 x:Key="btnTranslationYUnpressed">7</sys:Int32>
+        <sys:Int32 x:Key="btnHeightPressed">90</sys:Int32>
+        <sys:Int32 x:Key="btnTranslationYPressed">-10</sys:Int32>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout  Orientation="Vertical" VerticalOptions="Center">
+
+
+            <Frame 
+                   BackgroundColor="{AppThemeBinding   Light={StaticResource Dark-SkeletonColor}, Dark={StaticResource Dark-BlackWhite-Black}}" 
+                   HasShadow="True" 
+                   Margin="20,40,20,0">
+                <StackLayout>
+                    <pancake:PancakeView Margin="0,0,0,0">
+                    <controls:FloatingInputView
+                    x:Name="Username"                       
+                    IconResourceName="resource://ChurrasTrinca.Resources.Icons.Profile.svg"
+                    Title="Usuario"
+                    TextColor="Black"
+                />
+                </pancake:PancakeView>
+                <pancake:PancakeView Margin="0,0,0,0">
+                    <controls:FloatingInputView
+                     x:Name="Password"                       
+                    IconResourceName="resource://ChurrasTrinca.Resources.Icons.Lock.svg"
+                    Title="Senha"
+                    TextColor="Black"
+                />
+                </pancake:PancakeView>
+                <StackLayout 
+                    VerticalOptions="EndAndExpand" 
+                    HorizontalOptions="End">
+                    <Button
+                        BackgroundColor="Black"
+                        TextColor="White"
+                        Text="Entrar"                        
+                        Margin="20,30,40,0"
+                        CornerRadius="20"
+                        HeightRequest="80"
+                        WidthRequest="130"
+                        Clicked="BtnLogin"/>
+                </StackLayout> 
+                
+            </StackLayout>
+        </Frame>     
+            
+            <ffimageloading:CachedImage            
+              Margin="0,50,0,0"              
+              BackgroundColor="Transparent"
+              Source="{AppThemeBinding
+                        Light={extensions:ImageSourceFromSvg SvgSource=ChurrasTrinca.Resources.Icons.LogoTrinca.svg, ImageWidth={StaticResource btnRenderSize}, ImageHeight={StaticResource btnRenderSize}, SvgTint={StaticResource Light-Grey-800}},
+                        Dark={extensions:ImageSourceFromSvg SvgSource=ChurrasTrinca.Resources.Icons.LogoTrinca.svg, ImageWidth={StaticResource btnRenderSize}, ImageHeight={StaticResource btnRenderSize},  SvgTint={StaticResource Dark-BlackWhite-White}}}"
+    />
+    
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

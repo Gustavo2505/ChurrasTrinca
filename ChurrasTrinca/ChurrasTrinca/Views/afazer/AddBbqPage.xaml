@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ChurrasTrinca.Views.Bbq.AddBbqPage">
+             x:Class="ChurrasTrinca.Views.Bbq.AddBbqPage"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center">
+           
             <Entry x:Name="tituloV" Placeholder="Nome do churras"/>
             <Entry x:Name="descricao"  Placeholder="Descriçao"/>
             <Entry x:Name="ValorPorPessoa" Placeholder="Valor por pessoa" Keyboard="Numeric"/>

@@ -26,8 +26,10 @@ namespace ChurrasTrinca.Views.Bbq
 
         private async void BtnCadastrar(object sender, EventArgs e)
         {
-            var conversor = Convert.ToDouble(value_paid.Text);
+            var conversor = Convert.ToInt32(value_paid.Text);
        
+
+            
 
 
             _vm.name = name.Text;
@@ -44,7 +46,9 @@ namespace ChurrasTrinca.Views.Bbq
                 await DisplayAlert("Erro", "insira um participante", "OK");
                 return;
             }
-            await Navigation.PopModalAsync();
+
+
+            await Navigation.PopAsync();
 
 
             /*     var convert = Convert.ToDouble(value_paid.Text);

@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:extensions="clr-namespace:ChurrasTrinca.Helpers.MarkupExtensions" 
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="{AppThemeBinding Light={StaticResource Light-BlackWhite-White}, Dark={StaticResource Dark-BlackWhite-BlackFrame}}"
+             NavigationPage.HasNavigationBar="False"             
+             x:Class="ChurrasTrinca.Views.Participant.ListOfParticipant">
+    <ContentPage.Content>
+        <StackLayout>
+            <pancake:PancakeView HeightRequest="80" BackgroundColor="Gray">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button
+                    Text="Sair"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    Grid.Column="2"
+                    HeightRequest="20"/>
+
+                </Grid>
+            </pancake:PancakeView>
+
+            <StackLayout BackgroundColor="Transparent"  VerticalOptions="Center">
+                <CollectionView ItemsSource="{Binding MainList}" EmptyView="Não existem participantes para este churras">
+                    <CollectionView.ItemTemplate >
+                        <DataTemplate  >
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="1">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Open"  CommandParameter="{Binding .}"/>
+                                    </Label.GestureRecognizers>
+                                    <Label.FormattedText >
+                                        <FormattedString>
+                                            <Span Text="{Binding name}" FontSize="23"/>
+                                            <Span  Text=" "/>
+                                            <Span  Text="  "/>
+
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <ImageButton 
+                                    Source="{AppThemeBinding Light={extensions:ImageSourceFromSvg SvgSource=ChurrasTrinca.Resources.Icons.trash.svg, ImageWidth=50, ImageHeight=50},  Dark={extensions:ImageSourceFromSvg SvgSource=ChurrasTrinca.Resources.Icons.trash.svg, ImageWidth=50, ImageHeight=50}}"
+                                    Clicked="BtnDeleteParticipant" 
+                                    CommandParameter="{Binding .}" 
+                                    Grid.Column="2"
+                                    BackgroundColor="Transparent"
+                                    Margin="0,0,10,0"
+                                    />
+                                <ImageButton 
+                                    Source="{AppThemeBinding Light={extensions:ImageSourceFromSvg SvgSource=ChurrasTrinca.Resources.Icons.AddPerson.svg, ImageWidth=50, ImageHeight=50},  Dark={extensions:ImageSourceFromSvg SvgSource=ChurrasTrinca.Resources.Icons.AddPerson.svg, ImageWidth=50, ImageHeight=50}}"
+                                    Clicked="BtnInsertParticipant" 
+                                    CommandParameter="{Binding .}" 
+                                    Grid.Column="3"
+                                    BackgroundColor="Transparent"
+                                      Margin="0,0,15,0"
+                                    />
+                            </Grid>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+            <StackLayout BackgroundColor="Transparent" 
+                         VerticalOptions="EndAndExpand">
+                <pancake:PancakeView BackgroundColor="Black">
+                    <Button 
+                        Text="Inserir Participant" 
+                        TextColor="White" 
+                        HeightRequest="100" 
+                        BackgroundColor="Black" 
+                        Clicked="BtnInsertParticipant" 
+                        ImageSource="resource://ChurrasTrinca.Resources.Icons.Lock.svg"
+                       />
+                </pancake:PancakeView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

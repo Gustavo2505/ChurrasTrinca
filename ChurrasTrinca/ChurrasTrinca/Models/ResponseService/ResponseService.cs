@@ -13,5 +13,9 @@ namespace ChurrasTrinca.Models.ResponseService
 
         public Dictionary<string, List<string>> Errors { get; set; }
 
+        public static implicit operator ResponseService<t>(ResponseService<Participants> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

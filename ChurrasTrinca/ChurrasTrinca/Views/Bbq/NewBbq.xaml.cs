@@ -12,23 +12,23 @@ using Xamarin.Forms.Xaml;
 namespace ChurrasTrinca.Views.Bbq
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AddBbqPage : ContentPage
+    public partial class NewBbq : ContentPage
     {
         BbqVM _vm;
         Action<Models.Bbq> _saveBbq;
-        public AddBbqPage(BbqVM vm, Action<Models.Bbq> saveBbq)
-        {
+        public NewBbq(BbqVM vm, Action<Models.Bbq> saveBbq)
+        {          
             InitializeComponent();
             _vm = vm;
             _saveBbq = saveBbq;
             tituloV.Text = _vm.title;
             descricao.Text = _vm.description;
             ValorPorPessoa.Text = Convert.ToString(_vm.value_per_person);
+            date.Date = _vm.date;
+    
 
+        } 
 
-        }
-
-       
         private async void BtnNext_Clicked(object sender, EventArgs e)
         {
             var teste = tituloV;
@@ -49,23 +49,43 @@ namespace ChurrasTrinca.Views.Bbq
                 tituloV.Focus();
                 return;
             }
-            var conversor = ValorPorPessoa.Text;
-
-
-           var convertido = Convert.ToDouble(conversor);
 
             _vm.title = tituloV.Text;
             _vm.description = descricao.Text;
-            _vm.value_per_person = convertido;
+            _vm.value_per_person = Convert.ToDouble(ValorPorPessoa.Text);
             _vm.date = date.Date;
 
 
+            Models.Bbq ev = new Models.Bbq
+            {
+                title = _vm.title,
+                description = _vm.description,
+                date = _vm.date,
+                Participants = new List<Models.Participants>(),
+                value_per_person = _vm.value_per_person,
+                id = _vm.id
 
-            var v = new AllParticipantsPage(_vm, _saveBbq);
+            };
 
-            await Navigation.PushModalAsync(new NavigationPage(v));
+            if (_vm.id == 0)
+            {
+                ResponseService<Models.Bbq> responseService = await Services.Service.ServiceClientInstance.PostBbq(ev);
+         
+                await Navigation.PushAsync(new ListOfBbq());
+            }
 
-     
+            else
+            {
+                ResponseService<Models.Bbq> responseService = await Services.Service.ServiceClientInstance.putBbq(ev);
+                await Navigation.PushAsync(new ListOfBbq());
+            }
+           
+        }
+
+        private void BtnBack(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
         }
     }
-}
+    }
+

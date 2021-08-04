@@ -6,7 +6,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,13 +16,14 @@ namespace ChurrasTrinca.Views.Bbq
     {
         BbqVM _vm;
         Action<Models.Bbq> _saveBbq;
-        public ObservableCollection<ParticipantVM> MainList { get; set; }
+        public ObservableCollection<Models.Participants> MainList { get; set; }
         public AllParticipantsPage(BbqVM vm, Action<Models.Bbq> saveBbq)
         {
             InitializeComponent();
             _vm = vm;
             _saveBbq = saveBbq;
             BindingContext = _vm;
+            carregatudo();
         }
 
         private async void BtnCancel(object sender, EventArgs e)
@@ -34,6 +34,21 @@ namespace ChurrasTrinca.Views.Bbq
                 await Navigation.PopToRootAsync();
             }
 
+        }
+
+
+        private async void carregatudo()
+        {
+            MainList = new ObservableCollection<Models.Participants>();
+
+            if(_vm.id != null)
+            { 
+            var lst = Services.Service.ServiceClientInstance.GetAllUsers(_vm.id);
+            }
+            else
+            {
+
+            }
         }
 
 
@@ -71,27 +86,31 @@ namespace ChurrasTrinca.Views.Bbq
               
             };
 
-            foreach (ParticipantVM de in _vm._participantVM)
-            {
-                ev.Participants.Add(new Models.Participants
-                {
-                    name = de.name,
-                    value_paid = de.value_paid,
-                    confirmed = de.confirmed,
-                    id = de.id
-                }) ;
+            /*  foreach (ParticipantVM de in _vm._participantVM)
+              {
+                  ev.Participants.Add(new Models.Participants
+                  {
+                      BbqId = ev.id,
+                      name = de.name,
+                      value_paid = de.value_paid,
+                      confirmed = de.confirmed,                    
+                      id = de.id
+                  }) ;*/
 
-                if(_vm.id == 0)
-                {
-                    ResponseService<Models.Bbq> responseService = await Services.Service.ServiceClientInstance.PostBbq(ev);
-                    await Navigation.PopToRootAsync();
-                    await Navigation.PushAsync(new AllBbqPage());
-					
-                }
+            if (_vm.id == 0)
+            {
+
+
+                ResponseService<Models.Bbq> responseService = await Services.Service.ServiceClientInstance.PostBbq(ev);
+
+                var t = responseService.Data.id;
+                await Navigation.PushAsync(new AllBbqPage());
+            }
+                
                 else
                 {
-                    //TODO: ATUALIZAR 
-                }
+                ResponseService<Models.Bbq> responseService = await Services.Service.ServiceClientInstance.putBbq(ev);
+            }
                 ///TODO: CHAMAR METODO ATUALIZA OU UPDATE
 
 
@@ -104,9 +123,7 @@ namespace ChurrasTrinca.Views.Bbq
                          await Navigation.PopModalAsync();
                 */
 
-            }
-
-            }
+            }            
 
         private void Button_Clicked(object sender, EventArgs e)
         {

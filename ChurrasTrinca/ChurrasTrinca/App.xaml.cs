@@ -1,5 +1,6 @@
-﻿using ChurrasTrinca.Views;
-
+﻿using ChurrasTrinca.ViewModel.Bbq;
+using ChurrasTrinca.Views;
+using ChurrasTrinca.Views.Bbq;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,8 +12,10 @@ namespace ChurrasTrinca
         public App()
         {
             InitializeComponent();
+          
+            MainPage = new NavigationPage(new Views.Login.LoginPage());
 
-            MainPage = new NavigationPage(new LoginPage());
+
         }
 
         protected override void OnStart()

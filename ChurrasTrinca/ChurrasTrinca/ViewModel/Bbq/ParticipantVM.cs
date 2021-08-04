@@ -21,8 +21,10 @@ namespace ChurrasTrinca.ViewModel.Bbq
                 SetProperty(ref _IsSelecionado, value);
             }
         }
-        public double value_paid { get; set; }
-    
+        public int value_paid { get; set; }
+        public int bbq_id { get; set; }
+
+
     }
 }
 

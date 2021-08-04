@@ -1,5 +1,6 @@
 ﻿using ChurrasTrinca.Models;
 using ChurrasTrinca.Models.ResponseService;
+using ChurrasTrinca.ViewModel.Bbq;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -75,7 +76,7 @@ namespace ChurrasTrinca.Services
 
         public async Task<ResponseService<Bbq>> PostBbq(Bbq bbq)
         {
-        
+
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tok);
             var content = new StringContent(JsonConvert.SerializeObject(bbq), Encoding.UTF8, "application/json");
 
@@ -90,7 +91,7 @@ namespace ChurrasTrinca.Services
                 using (var reader = new StreamReader(stream))
                 using (var json = new JsonTextReader(reader))
                 {
-                    var jsoncontent = _serializer.Deserialize<ResponseService<Bbq>>(json);                    
+                    var jsoncontent = _serializer.Deserialize<ResponseService<Bbq>>(json);
                     return jsoncontent;
                 }
             }
@@ -102,13 +103,18 @@ namespace ChurrasTrinca.Services
             }
             return responseService;
         }
-//        public async Task<ResponseService<List<Bbq>>> GetAllBbq(int numberOfPage = 1)
-        public async Task<ResponseService<List<Bbq>>> GetAllBbq()
-        {       
-            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tok);           
-          //  HttpResponseMessage response = await client.GetAsync($"https://trinca-api.herokuapp.com/bbq/?paginated=true&page={numberOfPage}");
-            HttpResponseMessage response = await client.GetAsync($"https://trinca-api.herokuapp.com/bbq/");
-            ResponseService <List<Bbq>> responseService = new ResponseService<List<Bbq>>();
+
+
+
+        public async Task<ResponseService<Bbq>> putBbq(Bbq bbq)
+        {
+
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tok);
+            var content = new StringContent(JsonConvert.SerializeObject(bbq), Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await client.PutAsync("https://trinca-api.herokuapp.com/bbq/", content);
+
+            ResponseService<Bbq> responseService = new ResponseService<Bbq>();
             responseService.isSucess = response.IsSuccessStatusCode;
             responseService.statusCode = (int)response.StatusCode;
             if (response.IsSuccessStatusCode)
@@ -117,7 +123,34 @@ namespace ChurrasTrinca.Services
                 using (var reader = new StreamReader(stream))
                 using (var json = new JsonTextReader(reader))
                 {
-                    string content = await response.Content.ReadAsStringAsync();          
+                    var jsoncontent = _serializer.Deserialize<ResponseService<Bbq>>(json);
+                    return jsoncontent;
+                }
+            }
+            else
+            {
+                string problemResponse = await response.Content.ReadAsStringAsync();
+                var erros = JsonConvert.DeserializeObject<ResponseService<CredentialResponse>>(problemResponse);
+                responseService.Errors = erros.Errors;
+            }
+            return responseService;
+        }
+        //        public async Task<ResponseService<List<Bbq>>> GetAllBbq(int numberOfPage = 1)
+        public async Task<ResponseService<List<Bbq>>> GetAllBbq()
+        {
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tok);
+            //  HttpResponseMessage response = await client.GetAsync($"https://trinca-api.herokuapp.com/bbq/?paginated=true&page={numberOfPage}");
+            HttpResponseMessage response = await client.GetAsync($"https://trinca-api.herokuapp.com/bbq/");
+            ResponseService<List<Bbq>> responseService = new ResponseService<List<Bbq>>();
+            responseService.isSucess = response.IsSuccessStatusCode;
+            responseService.statusCode = (int)response.StatusCode;
+            if (response.IsSuccessStatusCode)
+            {
+                using (var stream = await response.Content.ReadAsStreamAsync())
+                using (var reader = new StreamReader(stream))
+                using (var json = new JsonTextReader(reader))
+                {
+                    string content = await response.Content.ReadAsStringAsync();
                     return JsonConvert.DeserializeObject<ResponseService<List<Bbq>>>(content);
                 }
             }
@@ -133,15 +166,10 @@ namespace ChurrasTrinca.Services
         }
 
 
-        public async Task<ResponseService<Participants>> PostUser(string Name, bool Confirmed, double Value_Paid)
+        public async Task<ResponseService<Participants>> PostUser(Participants participants)
         {
-            Participants participants = new Participants()
-            {
-                name = Name,
-                confirmed = Confirmed,
-                value_paid = Value_Paid
 
-            };        
+
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tok);
             var content = new StringContent(JsonConvert.SerializeObject(participants), Encoding.UTF8, "application/json");
 
@@ -169,12 +197,25 @@ namespace ChurrasTrinca.Services
             return responseService;
         }
 
-        public async Task<ResponseService<List<Participants>>> GetAllUsers()
+        public async Task<ResponseService<Participants>> putUser(Participants participants)
         {
-          
+
+
+         /*   Participants participants = new Participants()
+            {
+                BbqId = bbqid,
+                name = Name,
+                confirmed = Confirmed,
+                value_paid = Value_Paid
+
+
+            };*/
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tok);
-            HttpResponseMessage response = await client.GetAsync("https://trinca-api.herokuapp.com/participant/");
-            ResponseService<List<Participants>> responseService = new ResponseService<List<Participants>>();
+            var content = new StringContent(JsonConvert.SerializeObject(participants), Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await client.PutAsync("https://trinca-api.herokuapp.com/participant", content);
+
+            ResponseService<Participants> responseService = new ResponseService<Participants>();
             responseService.isSucess = response.IsSuccessStatusCode;
             responseService.statusCode = (int)response.StatusCode;
             if (response.IsSuccessStatusCode)
@@ -183,8 +224,40 @@ namespace ChurrasTrinca.Services
                 using (var reader = new StreamReader(stream))
                 using (var json = new JsonTextReader(reader))
                 {
+                    var jsoncontent = _serializer.Deserialize<ResponseService<Participants>>(json);
+                    return jsoncontent;
+                }
+            }
+            else
+            {
+                string problemResponse = await response.Content.ReadAsStringAsync();
+                var erros = JsonConvert.DeserializeObject<ResponseService<CredentialResponse>>(problemResponse);
+                responseService.Errors = erros.Errors;
+            }
+            return responseService;
+        }
+
+
+        public async Task<ResponseService<List<Participants>>> GetAllUsers(int id)
+        {
+
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tok);
+            HttpResponseMessage response = await client.GetAsync($"https://trinca-api.herokuapp.com/participants/{id}");
+            ResponseService<List<Participants>> responseService = new ResponseService<List<Participants>>();
+            responseService.isSucess = response.IsSuccessStatusCode;
+            responseService.statusCode = (int)response.StatusCode;
+            if(response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return responseService;
+            }
+
+            if (response.IsSuccessStatusCode)
+            {
+                using (var stream = await response.Content.ReadAsStreamAsync())
+                using (var reader = new StreamReader(stream))
+                using (var json = new JsonTextReader(reader))
+                {
                     string content = await response.Content.ReadAsStringAsync();
-                    //  var jsoncontent = _serializer.Deserialize<ResponseService<List<Bbq>>>(content);
                     return JsonConvert.DeserializeObject<ResponseService<List<Participants>>>(content);
                 }
             }
@@ -199,6 +272,57 @@ namespace ChurrasTrinca.Services
 
         }
 
+        public async Task<ResponseService<Bbq>> DeleteBbq(int id)
+        {
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tok);
+            HttpResponseMessage response = await client.DeleteAsync($"https://trinca-api.herokuapp.com/bbq/{id}");
+            ResponseService<Bbq> responseService = new ResponseService<Bbq>();
+            responseService.isSucess = response.IsSuccessStatusCode;
+            responseService.statusCode = (int)response.StatusCode;
+            if (response.IsSuccessStatusCode)
+            {
+                using (var stream = await response.Content.ReadAsStreamAsync())
+                using (var reader = new StreamReader(stream))
+                using (var json = new JsonTextReader(reader))
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<ResponseService<Bbq>>(content);
+                }
+            }
+            else
+            {
+                string problemResponse = await response.Content.ReadAsStringAsync();
+                var erros = JsonConvert.DeserializeObject<ResponseService<CredentialResponse>>(problemResponse);
+                responseService.Errors = erros.Errors;
+            }
+
+            return responseService;
+        }
+        public async Task<ResponseService<Participants>> DeleteParticipant(int id)
+        {
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tok);
+            HttpResponseMessage response = await client.DeleteAsync($"https://trinca-api.herokuapp.com/participant/{id}");
+            ResponseService<Participants> responseService = new ResponseService<Participants>();
+            responseService.isSucess = response.IsSuccessStatusCode;
+            responseService.statusCode = (int)response.StatusCode;
+            if (response.IsSuccessStatusCode)
+            {
+                using (var stream = await response.Content.ReadAsStreamAsync())
+                using (var reader = new StreamReader(stream))
+                using (var json = new JsonTextReader(reader))
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<ResponseService<Participants>>(content);
+                }
+            }
+            else
+            {
+                string problemResponse = await response.Content.ReadAsStringAsync();
+                var erros = JsonConvert.DeserializeObject<ResponseService<CredentialResponse>>(problemResponse);
+                responseService.Errors = erros.Errors;
+            }
+
+            return responseService;
+        }
     }
 }
-

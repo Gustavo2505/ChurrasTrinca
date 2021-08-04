@@ -79,8 +79,8 @@ namespace ChurrasTrinca.Views.Bbq
 
                 var t = (Button)sender;
                 Models.Bbq ev = (Models.Bbq)t.CommandParameter;
-                
-               // await methods.ExcluirEventAndAction(ev.Id);
+
+                ResponseService<Models.Bbq> responseService = await Services.Service.ServiceClientInstance.DeleteBbq(ev.id);
                 MainList.Remove(ev);
             }
         
@@ -92,7 +92,7 @@ namespace ChurrasTrinca.Views.Bbq
             var vm = new BbqVM();
             vm._participantVM = new ObservableCollection<ParticipantVM>();
 
-            Navigation.PushModalAsync(new Bbq.AddBbqPage(vm, AddOrUpdateEvent));
+            Navigation.PushAsync(new Bbq.AddBbqPage(vm, AddOrUpdateEvent));
         }
 
         private void AddOrUpdateEvent(Models.Bbq ev)

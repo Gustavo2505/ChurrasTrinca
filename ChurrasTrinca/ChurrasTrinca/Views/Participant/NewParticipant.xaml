@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ChurrasTrinca.Views.Participant.NewParticipant">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Button VerticalOptions="Start" Clicked="BtnCancel" Text="Cancelar" TextColor="White"/>
+            <Entry Placeholder="Nome" x:Name="name"/>
+
+          
+            <CheckBox Color="Green" x:Name="chkTrue"/>
+            
+            <Entry Placeholder="Valor pago" Keyboard="Numeric" x:Name="value_paid"/>
+            <Button Text="Cadastrar" Clicked="BtnInsert"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

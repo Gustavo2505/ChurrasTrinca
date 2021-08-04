@@ -2,9 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ChurrasTrinca.Views.Bbq.AllParticipantsPage"
-             NavigationPage.HasNavigationBar="False">
+         
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="Blue">
     <ContentPage.Content>
         <StackLayout>
+           
             <Label Text="{Binding title}" FontSize="20" TextColor="Black" HorizontalOptions="Center" Padding="3"/>
 
 
@@ -18,7 +21,7 @@
 
 
 
-                    <CollectionView ItemsSource="{Binding Participants}" EmptyView="Você ainda não adicionou nenhum Participante.">
+                <CollectionView ItemsSource="{Binding Participants}" EmptyView="Você ainda não adicionou nenhum Participante.">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
 
@@ -81,8 +84,9 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <Button Grid.ColumnSpan="2" BackgroundColor="Orange" CornerRadius="10" Text="Criar Churras" TextColor="White" TranslationY="-10" Clicked="BtnAddBbq" ImageSource="ic_plus_circle_outline_white_18dp.png"/>
-                </Grid>
+                    <Button Grid.ColumnSpan="2" Grid.Row="0" BackgroundColor="Orange" CornerRadius="10" Text="Criar Churras" TextColor="White"  Clicked="BtnAddBbq"/>
+                <Button Grid.ColumnSpan="2" Grid.Row="1" BackgroundColor="Red" CornerRadius="10" Text="Cancelar" TextColor="White" Clicked="BtnCancel"/>
+            </Grid>
 
 
 
