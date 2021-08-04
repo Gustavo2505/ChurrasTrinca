@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -20,7 +21,7 @@ namespace ChurrasTrinca.Views.Login
         }
         private async void BtnLogin(object sender, EventArgs e)
         {
-
+            ButtonChangeStatus();
             var content = await Services.Service.ServiceClientInstance.AuthenticateUserAsync(Username.Text, Password.Text);
 
 
@@ -36,6 +37,20 @@ namespace ChurrasTrinca.Views.Login
                 await App.Current.MainPage.DisplayAlert("Erro", "Usuário ou senha invalidos", "Ok");
 
             }
+
+             async Task ButtonChangeStatus()
+            {
+                btLogin.IsEnabled = false;               
+                btLogin.TextColor = Color.White;
+                btLogin.Text = "Entrando..";
+                await Task.Delay(1000);
+               
+                btLogin.IsEnabled = true;
+                btLogin.TextColor = Color.White;
+                await Task.Delay(3000);
+                btLogin.Text = "Entrar";
+
+            }
+            }
         }
     }
-}

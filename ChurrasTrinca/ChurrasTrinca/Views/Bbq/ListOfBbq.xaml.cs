@@ -96,6 +96,7 @@ namespace ChurrasTrinca.Views.Bbq
             vm.title = ev.title;
             vm.id = ev.id;
             vm.date = ev.date;
+            vm.description = ev.description;
             vm.value_per_person = ev.value_per_person;   
 
             Navigation.PushAsync(new NewBbq(vm, AddOrUpdateEvent));

@@ -24,15 +24,30 @@ namespace ChurrasTrinca.Views.Bbq
             tituloV.Text = _vm.title;
             descricao.Text = _vm.description;
             ValorPorPessoa.Text = Convert.ToString(_vm.value_per_person);
-            date.Date = _vm.date;
+           // date.Date = _vm.date;
+
+            if(_vm.date.Year == 1)
+            {
+                date.MinimumDate = new DateTime(2021, 8, 4);
+            }
+
+            else 
+            {
+                date.Date = _vm.date;
+              
+            }
+         /*   else
+            {
+                date.MinimumDate = new DateTime(2021, 8, 4);
+            }*/
     
 
-        } 
-
+        }
+      
         private async void BtnNext_Clicked(object sender, EventArgs e)
         {
             var teste = tituloV;
-            var rx = new System.Text.RegularExpressions.Regex("^[a-zA-Z0-9-]*$");
+            var rx = new System.Text.RegularExpressions.Regex("^[a-zA-Z0-9- ]*$");
 
 
             if (teste.Text == null)
