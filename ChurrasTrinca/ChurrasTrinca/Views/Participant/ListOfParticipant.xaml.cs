@@ -98,11 +98,12 @@ namespace ChurrasTrinca.Views.Participant
                
 
             }
-            else
+            if (ev.id == 0)
             {
-                MainList.Add(ev);
-            }
 
+                MainList.Add(ev);
+
+            }
         }
 
         private void BtnBack(object sender, EventArgs e)

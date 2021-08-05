@@ -78,12 +78,14 @@ namespace ChurrasTrinca.Views.Bbq
                 var objList = MainList.FirstOrDefault(X => X.id == ev.id);
                 var idx = MainList.IndexOf(objList);
                 MainList[idx] = ev;
-            
             }
-            else
+            if (ev.id == 0)
             {
+               
                 MainList.Add(ev);
+           
             }
+          
 
         }
 
