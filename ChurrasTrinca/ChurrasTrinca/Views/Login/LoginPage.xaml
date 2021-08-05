@@ -57,7 +57,9 @@
                         CornerRadius="20"
                         HeightRequest="80"
                         WidthRequest="130"
-                        Clicked="BtnLogin"/>
+                        Clicked="BtnLogin"
+                        x:Name="btLogin"
+                        />
                 </StackLayout> 
                 
             </StackLayout>

@@ -56,7 +56,7 @@ namespace ChurrasTrinca.Views.Participant
 
         private async void BtnDeleteParticipant(object sender, EventArgs e)
         {
-            bool Alerta = await DisplayAlert("Atenção", "Deseja mesmo excluir este evento", "Sim", "Não");
+            bool Alerta = await DisplayAlert("Atenção", "Deseja mesmo excluir este Participante", "Sim", "Não");
             if (Alerta == true)
             {
 

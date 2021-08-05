@@ -48,7 +48,7 @@ namespace ChurrasTrinca.Views.Bbq
 
         private async void BtnDeleteBbq(object sender, EventArgs e)
         {
-            bool Alerta = await DisplayAlert("Atenção", "Deseja mesmo excluir este evento", "Sim", "Não");
+            bool Alerta = await DisplayAlert("Atenção", "Deseja mesmo excluir este Bbq", "Sim", "Não");
             if (Alerta == true)
             {
 

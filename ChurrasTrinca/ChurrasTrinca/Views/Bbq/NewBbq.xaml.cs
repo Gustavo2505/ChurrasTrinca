@@ -25,8 +25,17 @@ namespace ChurrasTrinca.Views.Bbq
             descricao.Text = _vm.description;
             ValorPorPessoa.Text = Convert.ToString(_vm.value_per_person);
             date.Date = _vm.date;
-    
 
+            if (_vm.date.Year == 1)
+            {
+                date.MinimumDate = new DateTime(2021, 8, 4);
+            }
+
+            else
+            {
+                date.Date = _vm.date;
+
+            }
         } 
 
         private async void BtnNext_Clicked(object sender, EventArgs e)
