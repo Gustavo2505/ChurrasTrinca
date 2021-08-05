@@ -49,11 +49,14 @@ namespace ChurrasTrinca.Views.Participant
 
         private void Open(object sender, EventArgs e)
         {
+            
               {
             var Event = (TappedEventArgs)e;
             var ev = (Models.Participants)Event.Parameter;        
             var lst = new ObservableCollection<ParticipantVM>();
             var vm = new ParticipantVM();
+            vm.bbq_id = _vm.id;
+            vm.id = ev.id; 
             vm.name = ev.name ;
             vm.value_paid = ev.value_paid;
             vm.confirmed = ev.confirmed;
