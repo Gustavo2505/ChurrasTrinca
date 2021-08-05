@@ -16,7 +16,7 @@ namespace ChurrasTrinca.Views.Participant
     public partial class ListOfParticipant : ContentPage
     {
         BbqVM _vm;
-     
+        int count { get; set; }
         Action<Models.Bbq> _saveBbq;
         public ObservableCollection<Models.Participants> MainList { get; set; }
         public ListOfParticipant(BbqVM vm, Action<Models.Bbq> saveBbq)
@@ -27,31 +27,42 @@ namespace ChurrasTrinca.Views.Participant
           
             LoadingAllHelper();
             BindingContext = this;
+           var t = count;
+
+
         }
         private async void LoadingAllHelper()
-        {
-
-           
+        {           
                 MainList = new ObservableCollection<Models.Participants>();
                 var lst = await Services.Service.ServiceClientInstance.GetAllUsers(_vm.id);
          
                   if (lst.Data != null) { 
                 foreach (Models.Participants its in lst.Data)
                 {
-
                     MainList.Add(its);
-            
+                    int t = 1;
+                    count = t++;
                 };
              
-                
-            }
-            
+            }            
          
         }
 
         private void Open(object sender, EventArgs e)
         {
+              {
+            var Event = (TappedEventArgs)e;
+            var ev = (Models.Participants)Event.Parameter;        
+            var lst = new ObservableCollection<ParticipantVM>();
+            var vm = new ParticipantVM();
+            vm.name = ev.name ;
+            vm.value_paid = ev.value_paid;
+            vm.confirmed = ev.confirmed;
+         
 
+            Navigation.PushAsync(new NewParticipant(vm, AddOrUpdateEvent));
+
+        }
         }
 
         private async void BtnDeleteParticipant(object sender, EventArgs e)

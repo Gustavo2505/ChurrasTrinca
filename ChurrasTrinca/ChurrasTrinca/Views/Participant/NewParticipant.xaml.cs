@@ -23,7 +23,15 @@ namespace ChurrasTrinca.Views.Participant
             _vm = vm;
             _saveBbq = saveBbq;
             name.Text = _vm.name;
-            
+
+            // chkTrue. = Convert.ToBoolean(_vm.confirmed());
+           // name.Text = _vm.name;
+           
+
+          //  var t = Convert.ToInt32(value_paid)
+       //     value_paid.Text = _vm.value_paid;
+
+           
         }
 
         private void BtnCancel(object sender, EventArgs e)
@@ -49,10 +57,12 @@ namespace ChurrasTrinca.Views.Participant
                 confirmed = _vm.confirmed
                 
             };
+
+            _saveBbq(ev);
             if (_vm.id == 0)
             {
                 ResponseService<Models.Participants> responseService = await Services.Service.ServiceClientInstance.PostUser(ev);
-
+               
                 await Navigation.PopAsync();
             }
 
