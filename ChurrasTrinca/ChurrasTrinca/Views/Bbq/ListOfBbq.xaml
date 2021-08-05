@@ -37,15 +37,16 @@
                                     <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition Width="4*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="1">
+                                <Label Grid.Column="0" Grid.ColumnSpan="2" Margin="10" HorizontalTextAlignment="Center">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Open"  CommandParameter="{Binding .}"/>
                                     </Label.GestureRecognizers>
                                     <Label.FormattedText >
                                         <FormattedString>
-                                            <Span Text="{Binding title}" FontSize="23"/>
-                                            <Span  Text=" "/>
-                                            <Span  Text="  "/>                                       
+                                            <Span Text="{Binding title}" FontSize="23"  />
+
+                                            <Span  Text="   R$" FontSize="23"/>
+                                            <Span  Text="{Binding value_per_person} " FontSize="23"/>
 
                                         </FormattedString>
                                     </Label.FormattedText>

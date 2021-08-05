@@ -31,6 +31,7 @@
                 <StackLayout >
                     
                     <Entry Placeholder="Nome" x:Name="name"/>
+                    <Label Text="Confirmado?"/>
                     <CheckBox Color="Green" x:Name="chkTrue"/>
                     <Entry Placeholder="Valor pago" Keyboard="Numeric" x:Name="value_paid"/>
                     <Button Text="Cadastrar" Clicked="BtnInsert"/>

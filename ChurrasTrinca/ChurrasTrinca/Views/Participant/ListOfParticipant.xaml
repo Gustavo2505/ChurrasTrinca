@@ -42,15 +42,15 @@
                                     <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition Width="4*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="1">
+                                <Label Grid.Column="0" Grid.ColumnSpan="2" Margin="13" VerticalTextAlignment="Start">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Open"  CommandParameter="{Binding .}"/>
                                     </Label.GestureRecognizers>
                                     <Label.FormattedText >
                                         <FormattedString>
-                                            <Span Text="{Binding name}" FontSize="23"/>
-                                            <Span  Text=" "/>
-                                            <Span  Text="  "/>
+                                            <Span Text="{Binding name}" FontSize="23" />
+                                            <Span  Text="     R$ " FontSize="23"/>
+                                            <Span  Text="{Binding value_paid}" FontSize="23"/>
 
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -63,14 +63,7 @@
                                     BackgroundColor="Transparent"
                                     Margin="0,0,10,0"
                                     />
-                                <ImageButton 
-                                    Source="{AppThemeBinding Light={extensions:ImageSourceFromSvg SvgSource=ChurrasTrinca.Resources.Icons.AddPerson.svg, ImageWidth=50, ImageHeight=50},  Dark={extensions:ImageSourceFromSvg SvgSource=ChurrasTrinca.Resources.Icons.AddPerson.svg, ImageWidth=50, ImageHeight=50}}"
-                                    Clicked="BtnInsertParticipant" 
-                                    CommandParameter="{Binding .}" 
-                                    Grid.Column="3"
-                                    BackgroundColor="Transparent"
-                                      Margin="0,0,15,0"
-                                    />
+                               
                             </Grid>
 
                         </DataTemplate>

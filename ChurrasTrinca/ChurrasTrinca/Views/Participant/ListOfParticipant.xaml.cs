@@ -16,37 +16,37 @@ namespace ChurrasTrinca.Views.Participant
     public partial class ListOfParticipant : ContentPage
     {
         BbqVM _vm;
+     
         Action<Models.Bbq> _saveBbq;
         public ObservableCollection<Models.Participants> MainList { get; set; }
         public ListOfParticipant(BbqVM vm, Action<Models.Bbq> saveBbq)
         {
             InitializeComponent();
-            _vm = vm;
+            _vm = vm;  
             _saveBbq = saveBbq;
-            BindingContext = _vm;
+          
             LoadingAllHelper();
+            BindingContext = this;
         }
         private async void LoadingAllHelper()
         {
-       
 
-            if (_vm.id != null)
-            {
+           
                 MainList = new ObservableCollection<Models.Participants>();
                 var lst = await Services.Service.ServiceClientInstance.GetAllUsers(_vm.id);
          
                   if (lst.Data != null) { 
                 foreach (Models.Participants its in lst.Data)
                 {
+
                     MainList.Add(its);
+            
                 };
-                }
+             
+                
             }
-            else
-            {
-
-            }          
-
+            
+         
         }
 
         private void Open(object sender, EventArgs e)

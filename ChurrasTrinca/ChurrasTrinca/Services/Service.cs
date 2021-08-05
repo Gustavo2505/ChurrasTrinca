@@ -173,7 +173,7 @@ namespace ChurrasTrinca.Services
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tok);
             var content = new StringContent(JsonConvert.SerializeObject(participants), Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response = await client.PostAsync("https://trinca-api.herokuapp.com/participant", content);
+            HttpResponseMessage response = await client.PostAsync("https://trinca-api.herokuapp.com/bbq/participant", content);
 
             ResponseService<Participants> responseService = new ResponseService<Participants>();
             responseService.isSucess = response.IsSuccessStatusCode;
@@ -217,7 +217,7 @@ namespace ChurrasTrinca.Services
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tok);
             var content = new StringContent(JsonConvert.SerializeObject(participants), Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response = await client.PutAsync("https://trinca-api.herokuapp.com/participant", content);
+            HttpResponseMessage response = await client.PutAsync("https://trinca-api.herokuapp.com/bbq/participant", content);
 
             ResponseService<Participants> responseService = new ResponseService<Participants>();
             responseService.isSucess = response.IsSuccessStatusCode;
@@ -246,7 +246,7 @@ namespace ChurrasTrinca.Services
         {
 
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tok);
-            HttpResponseMessage response = await client.GetAsync($"https://trinca-api.herokuapp.com/participants/{id}");
+            HttpResponseMessage response = await client.GetAsync($"https://trinca-api.herokuapp.com/bbq/participants/{id}");
             ResponseService<List<Participants>> responseService = new ResponseService<List<Participants>>();
             responseService.isSucess = response.IsSuccessStatusCode;
             responseService.statusCode = (int)response.StatusCode;
@@ -305,7 +305,7 @@ namespace ChurrasTrinca.Services
         public async Task<ResponseService<Participants>> DeleteParticipant(int id)
         {
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tok);
-            HttpResponseMessage response = await client.DeleteAsync($"https://trinca-api.herokuapp.com/participant/{id}");
+            HttpResponseMessage response = await client.DeleteAsync($"https://trinca-api.herokuapp.com/bbq/participants/{id}");
             ResponseService<Participants> responseService = new ResponseService<Participants>();
             responseService.isSucess = response.IsSuccessStatusCode;
             responseService.statusCode = (int)response.StatusCode;
