@@ -80,14 +80,16 @@ namespace ChurrasTrinca.Views.Bbq
             {
                 ResponseService<Models.Bbq> responseService = await Services.Service.ServiceClientInstance.PostBbq(ev);
                 await DisplayAlert("Sucesso", "Bbq inserido com sucesso", "Ok");
-                await Navigation.PushAsync(new ListOfBbq());
+                await Navigation.PopAsync();
+                _saveBbq(ev);
             }
 
             else
             {
                 ResponseService<Models.Bbq> responseService = await Services.Service.ServiceClientInstance.putBbq(ev);
                 await DisplayAlert("Sucesso", "Alteração realizada com sucesso", "Ok");
-                await Navigation.PushAsync(new ListOfBbq());
+                await Navigation.PopAsync();
+                _saveBbq(ev);
             }
            
         }

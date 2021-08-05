@@ -27,7 +27,7 @@ namespace ChurrasTrinca.Views.Participant
           
             LoadingAllHelper();
             BindingContext = this;
-           var t = count;
+    
 
 
         }
@@ -39,9 +39,8 @@ namespace ChurrasTrinca.Views.Participant
                   if (lst.Data != null) { 
                 foreach (Models.Participants its in lst.Data)
                 {
-                    MainList.Add(its);
-                    int t = 1;
-                    count = t++;
+                    MainList.Add(its);             
+                  
                 };
              
             }            
@@ -96,6 +95,8 @@ namespace ChurrasTrinca.Views.Participant
                 var objList = MainList.FirstOrDefault(X => X.id == ev.id);
                 var idx = MainList.IndexOf(objList);
                 MainList[idx] = ev;
+               
+
             }
             else
             {

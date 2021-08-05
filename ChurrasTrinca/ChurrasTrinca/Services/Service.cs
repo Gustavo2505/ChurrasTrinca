@@ -305,7 +305,7 @@ namespace ChurrasTrinca.Services
         public async Task<ResponseService<Participants>> DeleteParticipant(int id)
         {
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", tok);
-            HttpResponseMessage response = await client.DeleteAsync($"https://trinca-api.herokuapp.com/bbq/participants/{id}");
+            HttpResponseMessage response = await client.DeleteAsync($"https://trinca-api.herokuapp.com/bbq/participant/{id}");
             ResponseService<Participants> responseService = new ResponseService<Participants>();
             responseService.isSucess = response.IsSuccessStatusCode;
             responseService.statusCode = (int)response.StatusCode;

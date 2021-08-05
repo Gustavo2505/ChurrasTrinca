@@ -58,11 +58,11 @@ namespace ChurrasTrinca.Views.Participant
                 
             };
 
-            _saveBbq(ev);
+          
             if (_vm.id == 0)
             {
                 ResponseService<Models.Participants> responseService = await Services.Service.ServiceClientInstance.PostUser(ev);
-               
+                _saveBbq(ev);
                 await Navigation.PopAsync();
             }
 
@@ -70,7 +70,9 @@ namespace ChurrasTrinca.Views.Participant
             {
                 ResponseService<Models.Participants> responseService = await Services.Service.ServiceClientInstance.putUser(ev);
                 await Navigation.PopAsync();
+                _saveBbq(ev);
             }
+            
         }
 
         private void BtnBack(object sender, EventArgs e)
