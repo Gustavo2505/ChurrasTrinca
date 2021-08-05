@@ -33,7 +33,7 @@
                     <Entry x:Name="tituloV" Placeholder="Nome do churras" TextColor="{AppThemeBinding Light={StaticResource Light-Grey-800},  Dark={StaticResource Dark-BlackWhite-White}}"/>
                     <Entry x:Name="descricao"  Placeholder="Descriçao"  TextColor="{AppThemeBinding Light={StaticResource Light-Grey-800},  Dark={StaticResource Dark-BlackWhite-White}}"/>
                     <Entry x:Name="ValorPorPessoa" Placeholder="Valor por pessoa" Keyboard="Numeric"  TextColor="{AppThemeBinding Light={StaticResource Light-Grey-800},  Dark={StaticResource Dark-BlackWhite-White}}"/>
-                    <DatePicker x:Name="date" Date="04/08/2021"/>
+                    <DatePicker x:Name="date" />
                     <Button Text="Inserir Churras" Clicked="BtnNext_Clicked" BackgroundColor="{AppThemeBinding Light={StaticResource Light-BlackWhite-White}, Dark={StaticResource Dark-BlackWhite-Black}}" TextColor="{AppThemeBinding Light={StaticResource Light-Grey-800},  Dark={StaticResource Dark-BlackWhite-White}}"/>
            
             </StackLayout>

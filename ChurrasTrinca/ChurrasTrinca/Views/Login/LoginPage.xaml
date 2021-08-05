@@ -50,7 +50,6 @@
                     VerticalOptions="EndAndExpand" 
                     HorizontalOptions="End">
                     <Button
-                        x:Name="btLogin"
                         BackgroundColor="Black"
                         TextColor="White"
                         Text="Entrar"                        
